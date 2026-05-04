@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-labelledby="title desc">
+  <title id="title">Miniatura padrão do acervo CGEMP</title>
+  <desc id="desc">Cartão institucional azul e dourado para uso enquanto uma capa específica do material não foi adicionada.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#003b74" />
+      <stop offset="100%" stop-color="#005aa8" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg)" rx="40" />
+  <circle cx="690" cy="95" r="120" fill="rgba(255,255,255,0.08)" />
+  <circle cx="110" cy="430" r="160" fill="rgba(255,209,0,0.16)" />
+  <rect x="72" y="76" width="656" height="348" rx="28" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.22)" />
+  <text x="98" y="176" fill="#ffffff" font-family="Arial, sans-serif" font-size="46" font-weight="700">CGEMP</text>
+  <text x="98" y="234" fill="#dce9f6" font-family="Arial, sans-serif" font-size="28">Acervo de Materiais do Ensino Médio</text>
+  <text x="98" y="304" fill="#ffe589" font-family="Arial, sans-serif" font-size="24">Adicione uma capa específica em</text>
+  <text x="98" y="340" fill="#ffe589" font-family="Arial, sans-serif" font-size="24">/public/images/materials/</text>
+  <rect x="98" y="374" width="214" height="12" rx="6" fill="#ffd100" />
+  <rect x="330" y="374" width="120" height="12" rx="6" fill="rgba(255,255,255,0.4)" />
+  <rect x="468" y="374" width="180" height="12" rx="6" fill="rgba(255,255,255,0.26)" />
+</svg>

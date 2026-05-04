@@ -1,0 +1,44 @@
+---
+import styles from './MaterialCard.module.css';
+
+interface Props {
+  title: string;
+  description: string;
+  topicTitle: string;
+  tags: string[];
+  thumbnail: string;
+  downloadUrl: string;
+  subcategory?: string;
+  year: number;
+  edition?: string;
+}
+
+const { title, description, topicTitle, tags, thumbnail, downloadUrl, subcategory, year, edition } = Astro.props;
+---
+
+<article class={styles.card}>
+  <a href={downloadUrl} target="_blank" rel="noopener noreferrer" class={styles.thumbnailLink} aria-label={`Abrir download de ${title}`}>
+    <div class={styles.thumbnailWrapper}>
+      <img src={thumbnail} alt={`Capa do material ${title}`} class={styles.thumbnail} loading="lazy" />
+    </div>
+  </a>
+  <div class={styles.content}>
+    <div class={styles.meta}>
+      <span>{topicTitle}</span>
+      <span>{edition ?? year}</span>
+    </div>
+    <h3 class={styles.title}>{title}</h3>
+    <p class={styles.summary}>{description}</p>
+    {subcategory && <p class={styles.subcategory}>{subcategory}</p>}
+    {tags.length > 0 && (
+      <div class={styles.tags}>
+        {tags.slice(0, 4).map((tag) => (
+          <span class={styles.tag}>#{tag}</span>
+        ))}
+      </div>
+    )}
+  </div>
+  <a href={downloadUrl} target="_blank" rel="noopener noreferrer" class={styles.downloadButton}>
+    Baixar material
+  </a>
+</article>

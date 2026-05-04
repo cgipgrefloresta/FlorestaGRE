@@ -1,0 +1,233 @@
+---
+import Layout from '../layouts/Layout.astro';
+import TopicCard from '../components/TopicCard/TopicCard.astro';
+import MaterialCard from '../components/MaterialCard/MaterialCard.astro';
+import { getCollection } from 'astro:content';
+import { getPublishedMaterials, getPublishedTopics, normalizeMaterial, normalizeTopic, sortMaterials, sortTopics } from '../lib/content';
+
+const topicEntries = getPublishedTopics(sortTopics(await getCollection('topics')));
+const normalizedTopics = topicEntries.map(normalizeTopic);
+const topicsById = new Map(normalizedTopics.map((topic) => [topic.id, topic]));
+const materialEntries = getPublishedMaterials(sortMaterials(await getCollection('materials')));
+const featuredMaterials = materialEntries
+  .map((material) => normalizeMaterial(material, topicsById.get(material.data.topicId)?.title ?? 'CGEMP'))
+  .slice(0, 4);
+---
+
+<Layout title="Início" description="Portal público da Coordenação de Ensino Médio para consulta e download de materiais institucionais.">
+  <section class="hero">
+    <div class="heroCopy">
+      <p class="eyebrow">Portal institucional</p>
+      <h1>Acervo de materiais da Coordenação de Ensino Médio</h1>
+      <p class="heroLead">Navegue por tópicos, confirme cada material pela descrição e acesse o arquivo original pelo link externo correspondente.</p>
+    </div>
+
+    <div class="heroHighlights" aria-label="Resumo do acervo">
+      <div class="highlightCard">
+        <strong>{normalizedTopics.length}</strong>
+        <span>Tópicos disponíveis</span>
+      </div>
+      <div class="highlightCard">
+        <strong>{materialEntries.length}</strong>
+        <span>Materiais publicados</span>
+      </div>
+      <div class="highlightCard">
+        <strong>Busca ampla</strong>
+        <span>Pesquise por tópico, disciplina, ano ou palavra-chave</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="sectionHeader">
+    <div>
+      <p class="sectionEyebrow">Tópicos</p>
+      <h2>Escolha uma área do acervo</h2>
+    </div>
+    <p class="sectionText">Os tópicos ajudam a localizar os materiais com mais rapidez mesmo quando a busca não for usada.</p>
+  </section>
+
+  <section class="topics-grid" aria-label="Lista de tópicos">
+    {normalizedTopics.map((topic) => (
+      <TopicCard
+        title={topic.title}
+        description={topic.description}
+        count={materialEntries.filter((material) => material.data.topicId === topic.id).length}
+        href={`/${topic.id}`}
+      />
+    ))}
+  </section>
+
+  <section class="sectionHeader secondSection">
+    <div>
+      <p class="sectionEyebrow">Destaques</p>
+      <h2>Materiais recentes do acervo</h2>
+    </div>
+    <p class="sectionText">Os itens abaixo ajudam a sinalizar atualizações mais recentes ou conteúdos com maior visibilidade.</p>
+  </section>
+
+  <section class="materials-grid" aria-label="Materiais em destaque">
+    {featuredMaterials.map((material) => (
+      <MaterialCard
+        title={material.title}
+        description={material.description}
+        topicTitle={material.topicTitle}
+        tags={material.tags}
+        thumbnail={material.thumbnail}
+        downloadUrl={material.downloadUrl}
+        subcategory={material.subcategory}
+        year={material.year}
+        edition={material.edition}
+      />
+    ))}
+  </section>
+</Layout>
+
+<style>
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.9fr);
+    gap: var(--space-8);
+    margin: 0 0 var(--space-12) 0;
+    padding: var(--space-12);
+    background: var(--gradient-hero);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    color: var(--color-white);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: auto -8% -34% auto;
+    width: 320px;
+    height: 320px;
+    background: radial-gradient(circle, rgba(255,209,0,0.18) 0%, transparent 68%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .heroCopy {
+    position: relative;
+    z-index: 1;
+  }
+
+  .eyebrow,
+  .sectionEyebrow {
+    margin: 0 0 var(--space-3) 0;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.78rem;
+    font-weight: 700;
+  }
+
+  .eyebrow {
+    color: rgba(255, 255, 255, 0.78);
+  }
+
+  .hero h1 {
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-weight: 800;
+    color: var(--color-white);
+    margin-bottom: var(--space-4);
+    text-shadow: 0 2px 10px rgba(0,0,0,0.18);
+  }
+
+  .heroLead {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 760px;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .heroHighlights {
+    display: grid;
+    gap: var(--space-4);
+    position: relative;
+    z-index: 1;
+  }
+
+  .highlightCard {
+    display: grid;
+    gap: 4px;
+    padding: var(--space-5);
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+
+  .highlightCard strong {
+    font-size: 1.35rem;
+    color: var(--color-white);
+  }
+
+  .highlightCard span {
+    color: rgba(255, 255, 255, 0.86);
+  }
+
+  .sectionHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: var(--space-6);
+    margin-bottom: var(--space-6);
+  }
+
+  .secondSection {
+    margin-top: var(--space-16);
+  }
+
+  .sectionHeader h2 {
+    margin: 0;
+    font-size: clamp(1.7rem, 3vw, 2.4rem);
+  }
+
+  .sectionEyebrow {
+    color: var(--color-primary-dark);
+  }
+
+  .sectionText {
+    margin: 0;
+    max-width: 520px;
+    color: var(--color-text-muted);
+  }
+
+  .topics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: var(--space-8);
+  }
+
+  .materials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: var(--space-6);
+  }
+
+  @media (max-width: 900px) {
+    .hero,
+    .sectionHeader {
+      grid-template-columns: 1fr;
+      display: grid;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero {
+      padding: var(--space-8);
+      gap: var(--space-6);
+    }
+
+    .heroLead {
+      font-size: 1.05rem;
+    }
+
+    .topics-grid,
+    .materials-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

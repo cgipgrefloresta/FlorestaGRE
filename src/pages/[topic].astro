@@ -1,0 +1,162 @@
+---
+import Layout from '../layouts/Layout.astro';
+import MaterialCard from '../components/MaterialCard/MaterialCard.astro';
+import { getCollection } from 'astro:content';
+import { getPublishedMaterials, getPublishedTopics, normalizeMaterial, normalizeTopic, sortMaterials, sortTopics } from '../lib/content';
+
+export async function getStaticPaths() {
+  const topics = getPublishedTopics(sortTopics(await getCollection('topics')));
+  return topics.map((topic) => ({
+    params: { topic: topic.id },
+    props: { topic },
+  }));
+}
+
+const { topic } = Astro.props;
+const normalizedTopic = normalizeTopic(topic);
+const materials = getPublishedMaterials(
+  sortMaterials(
+    await getCollection('materials').then((entries) => entries.filter((entry) => entry.data.topicId === topic.id))
+  )
+);
+const normalizedMaterials = materials.map((material) => normalizeMaterial(material, normalizedTopic.title));
+---
+
+<Layout title={normalizedTopic.title} description={normalizedTopic.description}>
+  <div class="breadcrumb">
+    <a href="/">&larr; Voltar para o início</a>
+  </div>
+
+  <header class="topic-header">
+    <p class="eyebrow">Tópico do acervo</p>
+    <div class="headingRow">
+      <div>
+        <h1>{normalizedTopic.title}</h1>
+        <p>{normalizedTopic.description}</p>
+      </div>
+      <div class="statCard">
+        <strong>{normalizedMaterials.length}</strong>
+        <span>{normalizedMaterials.length === 1 ? 'material disponível' : 'materiais disponíveis'}</span>
+      </div>
+    </div>
+  </header>
+
+  {normalizedMaterials.length > 0 ? (
+    <div class="materials-grid">
+      {normalizedMaterials.map((material) => (
+        <MaterialCard
+          title={material.title}
+          description={material.description}
+          topicTitle={material.topicTitle}
+          tags={material.tags}
+          thumbnail={material.thumbnail}
+          downloadUrl={material.downloadUrl}
+          subcategory={material.subcategory}
+          year={material.year}
+          edition={material.edition}
+        />
+      ))}
+    </div>
+  ) : (
+    <div class="empty-state">
+      <p>Nenhum material encontrado neste tópico ainda.</p>
+    </div>
+  )}
+</Layout>
+
+<style>
+  .breadcrumb {
+    margin-bottom: var(--space-6);
+  }
+
+  .breadcrumb a {
+    color: var(--color-primary-dark);
+    font-weight: 700;
+  }
+
+  .breadcrumb a:hover {
+    text-decoration: underline;
+  }
+
+  .topic-header {
+    margin-bottom: var(--space-8);
+    padding: var(--space-8);
+    border-radius: var(--radius-lg);
+    background: linear-gradient(180deg, rgba(255,255,255,0.9) 0%, rgba(244,248,252,0.92) 100%);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .eyebrow {
+    margin: 0 0 var(--space-3) 0;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.78rem;
+    color: var(--color-primary-dark);
+    font-weight: 700;
+  }
+
+  .headingRow {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-6);
+    align-items: start;
+  }
+
+  .statCard {
+    display: grid;
+    gap: 4px;
+    min-width: 180px;
+    padding: var(--space-5);
+    border-radius: var(--radius-md);
+    background: var(--gradient-primary);
+    color: var(--color-text-light);
+    box-shadow: var(--shadow-md);
+  }
+
+  .statCard strong {
+    font-size: 1.5rem;
+  }
+
+  .statCard span {
+    color: rgba(255, 255, 255, 0.86);
+    font-size: 0.95rem;
+  }
+
+  .topic-header h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: var(--space-2);
+  }
+
+  .topic-header p {
+    font-size: 1.05rem;
+    color: var(--color-text-muted);
+    max-width: 760px;
+  }
+
+  .materials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--space-6);
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: var(--space-8);
+    background-color: white;
+    border-radius: var(--radius-md);
+    border: 1px dashed #ccc;
+    color: var(--color-text-muted);
+  }
+
+  @media (max-width: 720px) {
+    .headingRow {
+      flex-direction: column;
+    }
+
+    .statCard {
+      min-width: 0;
+      width: 100%;
+    }
+  }
+</style>

@@ -1,0 +1,125 @@
+---
+---
+
+<section class="searchShell" aria-label="Busca de materiais">
+  <div class="searchHeading">
+    <p class="eyebrow">Busca rápida</p>
+    <p class="searchIntro">Pesquise por disciplina, tópico, palavra-chave, ano ou edição.</p>
+  </div>
+  <div id="search" class="search-container"></div>
+</section>
+
+<script is:inline>
+  window.addEventListener('DOMContentLoaded', () => {
+    // Esconder a barra de busca ao rolar a página
+    window.addEventListener('scroll', () => {
+      const searchRow = document.querySelector('.searchRow');
+      if (searchRow) {
+        if (window.scrollY > 10) {
+          searchRow.style.display = 'none';
+        } else {
+          searchRow.style.display = '';
+        }
+      }
+    });
+
+    const root = document.querySelector('#search');
+    if (!root) return;
+
+    if (!window.PagefindUI) {
+      root.innerHTML = '<p class="searchFallback">A busca completa fica disponível em <strong>preview</strong> e produção após o build do índice.</p>';
+      return;
+    }
+
+    new window.PagefindUI({
+      element: '#search',
+      showImages: false,
+      showSubResults: false,
+      translations: {
+        placeholder: 'Buscar materiais...',
+        clear_search: 'Limpar',
+        load_more: 'Carregar mais',
+        search_label: 'Buscar neste site',
+        filters_label: 'Filtros',
+        zero_results: 'Nenhum material encontrado para [SEARCH_TERM]',
+        many_results: '[COUNT] resultados encontrados para [SEARCH_TERM]',
+        one_result: '[COUNT] resultado encontrado para [SEARCH_TERM]',
+        alt_search: 'Nenhum resultado para [SEARCH_TERM]. Mostrando resultados para [DIFFERENT_TERM].',
+        search_suggestion: 'Nenhum resultado para [SEARCH_TERM]. Você quis dizer [DIFFERENT_TERM]?',
+        searching: 'Buscando por [SEARCH_TERM]...'
+      }
+    });
+  });
+</script>
+
+<link href="/pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/pagefind/pagefind-ui.js" is:inline></script>
+
+<style>
+  .searchShell {
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  .searchHeading {
+    display: grid;
+    gap: 2px;
+  }
+
+  .eyebrow {
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.74rem;
+    color: rgba(255, 255, 255, 0.72);
+    font-weight: 700;
+  }
+
+  .searchIntro {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.94);
+    font-size: 0.96rem;
+  }
+
+  .search-container {
+    --pagefind-ui-primary: var(--color-primary);
+    --pagefind-ui-text: var(--color-text-main);
+    --pagefind-ui-background: var(--color-surface-elevated);
+    --pagefind-ui-border: rgba(0, 78, 154, 0.16);
+    --pagefind-ui-tag: #eef5ff;
+    --pagefind-ui-border-width: 1px;
+    --pagefind-ui-border-radius: var(--radius-md);
+    --pagefind-ui-font: var(--font-family-sans);
+    width: min(100%, 720px);
+  }
+
+  :global(.pagefind-ui__search-input) {
+    font-weight: 500;
+    min-height: 54px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  :global(.pagefind-ui__drawer) {
+    margin-top: var(--space-3);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+  }
+
+  :global(.pagefind-ui__result) {
+    padding: var(--space-4);
+  }
+
+  :global(.pagefind-ui--reset) {
+    color: var(--color-text-main);
+  }
+
+  :global(.searchFallback) {
+    margin: 0;
+    padding: var(--space-4);
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    color: var(--color-text-light);
+  }
+</style>

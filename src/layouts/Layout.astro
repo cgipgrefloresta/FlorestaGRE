@@ -1,0 +1,252 @@
+---
+import '../styles/tokens.css';
+import Search from '../components/Search.astro';
+import logo from '../assets/cgemp.svg';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Portal público de materiais da Coordenação de Ensino Médio de Pernambuco." } = Astro.props;
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="/logoCGEMP.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <title>{title} | CGEMP</title>
+    <meta property="og:title" content={`${title} | CGEMP`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="CGEMP" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={`${title} | CGEMP`} />
+    <meta name="twitter:description" content={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <a href="#conteudo" class="skip-link">Pular para o conteúdo principal</a>
+    <header class="header">
+      <div class="container headerShell">
+        <a href="/" class="branding">
+          <div class="logo-wrapper">
+            <img src={logo.src} alt="Logo CGEMP" class="main-logo" />
+          </div>
+          <div class="brandingText">
+            <strong>CGEMP</strong>
+            <span>GRE - Floresta</span>
+          </div>
+        </a>
+        <nav class="main-nav" aria-label="Navegação principal">
+          <a href="/">Início</a>
+          <span class="navDivider" aria-hidden="true"></span>
+          <span class="navHint">Portal público de materiais</span>
+        </nav>
+      </div>
+      <div class="container searchRow">
+        <Search />
+      </div>
+    </header>
+
+    <main id="conteudo" class="container main-content" data-pagefind-body>
+      <slot />
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; {new Date().getFullYear()} Coordenação de Ensino Médio de Pernambuco.</p>
+        <p class="footerNote">Os materiais do acervo ficam disponíveis diretamente no próprio portal para facilitar o acesso das escolas.</p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style>
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .skip-link {
+    position: absolute;
+    left: var(--space-4);
+    top: -48px;
+    z-index: 999;
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-sm);
+    background: var(--color-accent);
+    color: var(--color-blue-pe-deep);
+    font-weight: 700;
+  }
+
+  .skip-link:focus {
+    top: var(--space-4);
+  }
+
+  .header {
+    background: rgba(0, 54, 103, 0.96);
+    backdrop-filter: blur(14px);
+    color: var(--color-text-light);
+    padding: var(--space-4) 0 var(--space-5);
+    box-shadow: 0 10px 30px rgba(10, 34, 64, 0.16);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .header a {
+    color: var(--color-text-light);
+    font-weight: 700;
+  }
+
+  .header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .headerShell {
+    gap: var(--space-6);
+  }
+
+  .main-nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .branding {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    min-width: 0;
+  }
+
+  .logo-wrapper {
+    background: var(--color-white);
+    padding: 8px 10px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+  }
+
+  .main-logo {
+    height: 42px;
+    width: auto;
+  }
+
+  .brandingText {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .brandingText strong {
+    margin: 0;
+    color: var(--color-white);
+    font-size: 1.35rem;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+  }
+
+  .brandingText span {
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 0.92rem;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--space-6);
+  }
+
+  .main-content {
+    padding: var(--space-8) var(--space-6);
+    min-height: calc(100vh - 220px);
+    width: 100%;
+  }
+
+  .searchRow {
+    margin-top: var(--space-4);
+  }
+
+  .footer {
+    background-color: var(--color-blue-pe-deep);
+    color: rgba(255,255,255,0.82);
+    text-align: center;
+    padding: var(--space-8) 0;
+    margin-top: auto;
+    border-top: 4px solid var(--color-yellow-pe);
+  }
+
+  .footer p {
+    margin: 0;
+    font-weight: 500;
+  }
+
+  .footerNote {
+    margin-top: var(--space-2);
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.68);
+  }
+
+  .navDivider {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255, 209, 0, 0.8);
+  }
+
+  .navHint {
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 900px) {
+    .header .container,
+    .headerShell {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .main-nav {
+      flex-wrap: wrap;
+      gap: var(--space-3);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .container {
+      padding: 0 var(--space-4);
+    }
+
+    .main-content {
+      padding: var(--space-6) var(--space-4) var(--space-8);
+    }
+
+    .branding {
+      align-items: flex-start;
+    }
+
+    .brandingText strong {
+      font-size: 1.15rem;
+    }
+
+    .brandingText span,
+    .navHint {
+      font-size: 0.88rem;
+    }
+  }
+</style>

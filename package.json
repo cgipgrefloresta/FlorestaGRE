@@ -1,0 +1,29 @@
+{
+  "name": "cgemp-portal",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build && pagefind --site dist",
+    "preview": "astro preview",
+    "astro": "astro",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "e2e": "playwright test",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "@pagefind/default-ui": "^1.5.2",
+    "astro": "^6.1.6",
+    "pagefind": "^1.5.2"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.59.1",
+    "@testing-library/react": "^16.3.2",
+    "jsdom": "^29.0.2",
+    "vitest": "^4.1.4"
+  }
+}
