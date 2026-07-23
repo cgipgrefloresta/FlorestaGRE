@@ -59,7 +59,7 @@ export type NormalizedMaterial = {
   sourceType?: string;
 };
 
-export const DEFAULT_THUMBNAIL = '/images/materials/formacao-geral-basica/pernambuco.png';
+export const DEFAULT_THUMBNAIL = '/images/materials/formacao-geral-basica/Pernambuco_P&B_cut.png';
 
 export function sortTopics<T extends TopicLike>(topics: T[]) {
   return [...topics].sort((left, right) => {
