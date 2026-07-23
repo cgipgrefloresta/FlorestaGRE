@@ -9,9 +9,8 @@ const topicEntries = getPublishedTopics(sortTopics(await getCollection('topics')
 const normalizedTopics = topicEntries.map(normalizeTopic);
 const topicsById = new Map(normalizedTopics.map((topic) => [topic.id, topic]));
 const materialEntries = getPublishedMaterials(sortMaterials(await getCollection('materials')));
-const featuredMaterials = materialEntries
-  .map((material) => normalizeMaterial(material, topicsById.get(material.data.topicId)?.title ?? 'CGEMP'))
-  .slice(0, 4);
+const recentMaterials = [...materialEntries].sort((a, b) => b.data.publishedDate.getTime() - a.data.publishedDate.getTime()).slice(0, 8);
+const featuredMaterials = recentMaterials.map((material) => normalizeMaterial(material, topicsById.get(material.data.topicId)?.title ?? 'CGEMP'));
 ---
 
 <Layout title="Início" description="Portal público da Coordenação de Ensino Médio para consulta e download de materiais institucionais.">
@@ -62,7 +61,7 @@ const featuredMaterials = materialEntries
       <p class="sectionEyebrow">Destaques</p>
       <h2>Materiais recentes do acervo</h2>
     </div>
-    <p class="sectionText">Os itens abaixo ajudam a sinalizar atualizações mais recentes ou conteúdos com maior visibilidade.</p>
+    <p class="sectionText">Confira os últimos materiais adicionados ou atualizados no portal.</p>
   </section>
 
   <section class="materials-grid" aria-label="Materiais em destaque">
