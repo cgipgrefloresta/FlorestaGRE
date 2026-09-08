@@ -1,7 +1,7 @@
 ---
 import '../styles/tokens.css';
 import Search from '../components/Search.astro';
-import logo from '../assets/cgemp.svg';
+import logo from '../assets/cgemp-vortex.svg';
 
 interface Props {
   title: string;
@@ -47,6 +47,7 @@ const { title, description = "Portal público de materiais da Coordenação de E
         </a>
         <nav class="main-nav" aria-label="Navegação principal">
           <a href="/">Início</a>
+          <a href="/arduino">Curso Arduino</a>
           <span class="navDivider" aria-hidden="true"></span>
           <span class="navHint">Portal público de materiais</span>
         </nav>
@@ -135,7 +136,7 @@ const { title, description = "Portal público de materiais da Coordenação de E
 
   .logo-wrapper {
     background: var(--color-white);
-    padding: 8px 10px;
+    padding: 4px 6px;
     border-radius: 14px;
     display: flex;
     align-items: center;
@@ -144,7 +145,7 @@ const { title, description = "Portal público de materiais da Coordenação de E
   }
 
   .main-logo {
-    height: 42px;
+    height: 56px;
     width: auto;
   }
 

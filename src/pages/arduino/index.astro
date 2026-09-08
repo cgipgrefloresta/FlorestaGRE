@@ -1,0 +1,1418 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const courseModules = [
+  {
+    moduleNumber: "01",
+    moduleTheme: "iniciante",
+    moduleTitle: "Parte 1: Módulo Iniciante",
+    moduleSubtitle: "Fundamentos de Eletrônica, Simulação e Primeiros Circuitos",
+    moduleDescription: "Aprenda a base da eletricidade sem medo, domine o simulador virtual Tinkercad e dê os primeiros passos na prática com a placa física do Arduino.",
+    units: [
+      {
+        unitId: "unidade-1",
+        unitNumber: "1",
+        unitTitle: "Unidade 1: Eletrônica Desmistificada (Sem Medo do Circuito)",
+        unitSummary: "Conceitos fundamentais de tensão, corrente, Lei de Ohm, tipos de corrente, prevenção de curto-circuito e anatomia do hardware.",
+        topics: [
+          {
+            topicTitle: "1. Conceitos Fundamentais da Eletricidade",
+            lessons: [
+              {
+                title: "Tensão e Corrente Elétrica",
+                channel: "Mundo da Elétrica",
+                videoTitle: "O que é Tensão e Corrente Elétrica?",
+                youtubeUrl: "https://www.youtube.com/watch?v=4201WJ_G6yE",
+                embedUrl: "https://www.youtube.com/embed/4201WJ_G6yE",
+                description: "Analogia do fluxo de água, diferença de potencial em Volts (V) e movimento ordenado de elétrons em Ampères (A)."
+              },
+              {
+                title: "Resistência Elétrica e Lei de Ohm",
+                channel: "WR Kits",
+                videoTitle: "Entenda a Lei de Ohm de forma rápida!",
+                youtubeUrl: "https://www.youtube.com/watch?v=FjC3L4U3z1k",
+                embedUrl: "https://www.youtube.com/embed/FjC3L4U3z1k",
+                description: "Como os resistores limitam a corrente elétrica, a unidade Ohms (Ω) e a aplicação prática da fórmula fundamental V = I · R."
+              }
+            ]
+          },
+          {
+            topicTitle: "2. Tipos de Corrente",
+            lessons: [
+              {
+                title: "Corrente Alternada (CA) vs. Corrente Contínua (CC)",
+                channel: "Manual do Mundo",
+                videoTitle: "Diferença entre Corrente Alternada e Corrente Contínua",
+                youtubeUrl: "https://www.youtube.com/watch?v=p1B5C28sN54",
+                embedUrl: "https://www.youtube.com/embed/p1B5C28sN54",
+                description: "A diferença essencial entre a energia da rede elétrica (tomada) e a energia fornecida por pilhas, baterias e portas USB."
+              }
+            ]
+          },
+          {
+            topicTitle: "3. Segurança e Danos ao Equipamento",
+            lessons: [
+              {
+                title: "Cuidados com Curto-Circuito e Sobretensão",
+                channel: "Brincando com Ideias",
+                videoTitle: "Como NÃO QUEIMAR o seu ARDUINO!",
+                youtubeUrl: "https://www.youtube.com/watch?v=8K0i67Yq010",
+                embedUrl: "https://www.youtube.com/embed/8K0i67Yq010",
+                description: "Os erros mais frequentes na montagem, limites de corrente por pino (máx 40mA) e como proteger a placa e a protoboard."
+              }
+            ]
+          },
+          {
+            topicTitle: "4. Hardware e Anatomia do Arduino Uno",
+            lessons: [
+              {
+                title: "Alimentação da Placa",
+                channel: "Brincando com Ideias",
+                videoTitle: "Como Alimentar o Arduino (USB, Jack e Vin)",
+                youtubeUrl: "https://www.youtube.com/watch?v=7X-4a-L_zQ8",
+                embedUrl: "https://www.youtube.com/embed/7X-4a-L_zQ8",
+                description: "Formas seguras de ligar o Arduino: Cabo USB (5V), Conector Jack P4 (7V a 12V) e pino Vin com reguladores de tensão onboard."
+              },
+              {
+                title: "Portas Digitais e Analógicas",
+                channel: "Brincando com Ideias",
+                videoTitle: "Entenda as Portas Digitais e Analógicas do Arduino",
+                youtubeUrl: "https://www.youtube.com/watch?v=9_N6O6A4Jk0",
+                embedUrl: "https://www.youtube.com/embed/9_N6O6A4Jk0",
+                description: "Funcionamento dos pinos de entrada e saída: sinais discretos (HIGH/LOW) versus leitura contínua de variação de tensão (0 a 5V)."
+              },
+              {
+                title: "LEDs Indicadores da Placa",
+                channel: "Robótica Prática",
+                videoTitle: "O que significam os LEDs da placa Arduino?",
+                youtubeUrl: "https://www.youtube.com/watch?v=1K8a0M5N2gA",
+                embedUrl: "https://www.youtube.com/embed/1K8a0M5N2gA",
+                description: "O papel de cada LED integrado: ON (alimentação ativa), L (pino 13), TX e RX (transmissão e recepção de dados pela serial)."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        unitId: "unidade-2",
+        unitNumber: "2",
+        unitTitle: "Unidade 2: O Simulador Tinkercad e a Ponte Blocos → C++",
+        unitSummary: "Aprenda a montar e testar circuitos virtualmente sem risco de queima e compreenda a lógica de programação em blocos e código texto.",
+        topics: [
+          {
+            topicTitle: "Simulação e Lógica de Programação",
+            lessons: [
+              {
+                title: "Introdução ao Tinkercad Circuits e Interface Virtual",
+                channel: "Manual do Mundo",
+                videoTitle: "Use um Arduino sem ter Arduino! #ManualMaker Aula 5, Vídeo 1",
+                youtubeUrl: "https://www.youtube.com/watch?v=CrHJj4OQ6Sw",
+                embedUrl: "https://www.youtube.com/embed/CrHJj4OQ6Sw",
+                description: "Apresentação da plataforma gratuita Tinkercad, criação de salas de aula para alunos e montagem de componentes em ambiente 3D simulado."
+              },
+              {
+                title: "Primeiro Circuito Virtual (LED + Resistor)",
+                channel: "Tecnoltronica",
+                videoTitle: "Criando um circuito simples com o Tinkercad - LED + Resistor",
+                youtubeUrl: "https://www.youtube.com/watch?v=iJzCDBOFhrc",
+                embedUrl: "https://www.youtube.com/embed/iJzCDBOFhrc",
+                description: "Montagem prática de circuito básico na protoboard virtual, dimensionamento do resistor e análise dos alertas de sobrecorrente do simulador."
+              },
+              {
+                title: "Programação em Blocos e Transição para C++",
+                channel: "Tecnoltronica",
+                videoTitle: "Como usar PINO DIGITAL de SAÍDA no arduino - Curso Gratuito pelo Tinkercad",
+                youtubeUrl: "https://www.youtube.com/watch?v=BFvxmRM_EBo",
+                embedUrl: "https://www.youtube.com/embed/BFvxmRM_EBo",
+                description: "Lógica com blocos visuais, visualização simultânea em C++ (modo 'Blocos + Texto') e estrutura das funções setup() e loop()."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        unitId: "unidade-3",
+        unitNumber: "3",
+        unitTitle: "Unidade 3: Prática no Hardware Físico e Comandos de Base",
+        unitSummary: "Transição para o kit físico: organização da protoboard, primeiros códigos na IDE oficial, entradas/saídas digitais e leitura de sensores analógicos.",
+        topics: [
+          {
+            topicTitle: "Mão na Massa com Hardware e IDE",
+            lessons: [
+              {
+                title: "A Protoboard (Matriz de Contatos)",
+                channel: "Manual do Mundo",
+                videoTitle: "Como funciona uma protoboard #ManualMaker Aula 3, Vídeo 2",
+                youtubeUrl: "https://www.youtube.com/watch?v=DfU6llvIMcM",
+                embedUrl: "https://www.youtube.com/embed/DfU6llvIMcM",
+                description: "Estrutura interna das trilhas de contato, barramentos laterais de alimentação (positivo/negativo), colunas de sinal e boas práticas de montagem."
+              },
+              {
+                title: "Primeiros Passos na IDE do Arduino ('Blink' e Upload)",
+                channel: "Brincando com Ideias",
+                videoTitle: "Curso de Arduino para Iniciantes - Aula 01 - Primeiros Passos",
+                youtubeUrl: "https://www.youtube.com/watch?v=oOWuq_Nazig",
+                embedUrl: "https://www.youtube.com/embed/oOWuq_Nazig",
+                description: "Instalação da IDE oficial, seleção de placa e porta COM, compilação, upload do código clássico Blink e uso da instrução delay()."
+              },
+              {
+                title: "Saídas e Entradas Digitais (Botão, Pull-Up e Pull-Down)",
+                channel: "Brincando com Ideias",
+                videoTitle: "Resistor de Pull Up e Pull Down no Arduino",
+                youtubeUrl: "https://www.youtube.com/watch?v=2czuMC7kRMs",
+                embedUrl: "https://www.youtube.com/embed/2czuMC7kRMs",
+                description: "Comandos pinMode(), digitalWrite() e digitalRead(). O fenômeno do pino flutuante e como estabilizar sinais com resistores Pull-Up/Pull-Down."
+              },
+              {
+                title: "Entradas Analógicas e Leitura de Sensores (LDR e ADC)",
+                channel: "Brincando com Ideias",
+                videoTitle: "Arduino Prático - LDR, Buzzer, analogRead e um Alarme Simples",
+                youtubeUrl: "https://www.youtube.com/watch?v=iIR9_Lfua_w",
+                embedUrl: "https://www.youtube.com/embed/iIR9_Lfua_w",
+                description: "Diferença entre grandezas digitais e analógicas, Conversor AD de 10 bits (0 a 1023), leitura de luz com sensor LDR e disparo de buzzer."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    moduleNumber: "02",
+    moduleTheme: "intermediario",
+    moduleTitle: "Parte 2: Módulo Intermediário",
+    moduleSubtitle: "Sensores Avançados, Displays, Tempo Real e Ecossistema",
+    moduleDescription: "Amplie seus projetos captando dados ambientais (movimento, som), exibindo informações em visores LCD e conhecendo diferentes plataformas de microcontroladores.",
+    units: [
+      {
+        unitId: "unidade-4",
+        unitNumber: "4",
+        unitTitle: "Unidade 4: Sensores de Evento e Monitoramento de Dados",
+        unitSummary: "Sensores térmicos infravermelhos (PIR), módulos de áudio e comunicação serial bidirecional para monitoramento em tempo real.",
+        topics: [
+          {
+            topicTitle: "Detecção e Comunicação Serial",
+            lessons: [
+              {
+                title: "Sensor de Movimento (PIR - Infravermelho Passivo)",
+                channel: "Brincando com Ideias",
+                videoTitle: "Sensor de Presença PIR com Arduino",
+                youtubeUrl: "https://www.youtube.com/watch?v=R2j1dI06FIs",
+                embedUrl: "https://www.youtube.com/embed/R2j1dI06FIs",
+                description: "Princípio de detecção por radiação infravermelha do corpo humano, regulagem de sensibilidade e temporização nos trimpots do módulo."
+              },
+              {
+                title: "Sensor de Som (Módulo Microfone)",
+                channel: "Robótica Prática",
+                videoTitle: "Como usar o Módulo Sensor de Som com Arduino",
+                youtubeUrl: "https://www.youtube.com/watch?v=48S43S4H2x8",
+                embedUrl: "https://www.youtube.com/embed/48S43S4H2x8",
+                description: "Captação de pulsos sonoros com microfone de eletreto, ajuste de limiar no potenciômetro integrado e acionamentos por ruído ou palmas."
+              },
+              {
+                title: "Depuração com Monitor Serial",
+                channel: "WR Kits",
+                videoTitle: "Usando o Monitor Serial do Arduino para Depuração",
+                youtubeUrl: "https://www.youtube.com/watch?v=L_6G_Ym2o-M",
+                embedUrl: "https://www.youtube.com/embed/L_6G_Ym2o-M",
+                description: "Comandos Serial.begin(9600) e Serial.println(), leitura de variáveis no computador e técnicas para encontrar falhas na execução."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        unitId: "unidade-5",
+        unitNumber: "5",
+        unitTitle: "Unidade 5: Periféricos Avançados, Bibliotecas e Tempo Real",
+        unitSummary: "Uso do ecossistema de bibliotecas C++, relógio de tempo real com bateria (RTC) e telas LCD com interface simplificada I2C.",
+        topics: [
+          {
+            topicTitle: "Expansão de Recursos e Displays",
+            lessons: [
+              {
+                title: "Instalação e Uso de Bibliotecas em C++",
+                channel: "Brincando com Ideias",
+                videoTitle: "Como Instalar e Usar Bibliotecas no Arduino IDE",
+                youtubeUrl: "https://www.youtube.com/watch?v=N4k3E-8l5QY",
+                embedUrl: "https://www.youtube.com/embed/N4k3E-8l5QY",
+                description: "Conceito de pacotes e classes prontas, diretiva #include e instalação prática pelo Gerenciador de Bibliotecas da IDE do Arduino."
+              },
+              {
+                title: "Módulo de Tempo Real (RTC DS1307 / DS3231)",
+                channel: "WR Kits",
+                videoTitle: "Módulo RTC DS3231 com Arduino: Relógio em Tempo Real",
+                youtubeUrl: "https://www.youtube.com/watch?v=P720X1aO1k4",
+                embedUrl: "https://www.youtube.com/embed/P720X1aO1k4",
+                description: "Como manter a contagem de data e hora mesmo com o Arduino desligado utilizando a bateria moeda CR2032 e biblioteca de relógio."
+              },
+              {
+                title: "Display LCD 16x2 com Módulo I2C",
+                channel: "Brincando com Ideias",
+                videoTitle: "Display LCD 16x2 com Adaptador I2C no Arduino",
+                youtubeUrl: "https://www.youtube.com/watch?v=5rK7A_40f4k",
+                embedUrl: "https://www.youtube.com/embed/5rK7A_40f4k",
+                description: "Simplificação de circuito usando barramento I2C (apenas 2 pinos: SDA e SCL), descoberta do endereço hexadecimal e exibição de dados."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        unitId: "unidade-6",
+        unitNumber: "6",
+        unitTitle: "Unidade 6: Panorama de Placas e Projeto Integrador Autônomo",
+        unitSummary: "Comparativo entre placas populares do mercado e metodologia para criar projetos pedagógicos completos e autônomos no Ensino Médio.",
+        topics: [
+          {
+            topicTitle: "Arquiteturas e Estrutura de Projetos",
+            lessons: [
+              {
+                title: "Panorama de Placas (Uno vs. Nano vs. ESP32 vs. Pico)",
+                channel: "Mundo da Elétrica",
+                videoTitle: "Arduino vs ESP32 vs Raspberry Pi Pico: Qual Escolher?",
+                youtubeUrl: "https://www.youtube.com/watch?v=Oa17xX8P6-M",
+                embedUrl: "https://www.youtube.com/embed/Oa17xX8P6-M",
+                description: "Comparativo técnico de poder de processamento, consumo, conectividade Wi-Fi/Bluetooth do ESP32 e suporte a MicroPython da Raspberry Pi Pico."
+              },
+              {
+                title: "Projeto Integrador Autônomo e Metodologia",
+                channel: "Brincando com Ideias",
+                videoTitle: "Criando um Projeto Completo de Automação com Arduino",
+                youtubeUrl: "https://www.youtube.com/watch?v=9jX4O1Y6_40",
+                embedUrl: "https://www.youtube.com/embed/9jX4O1Y6_40",
+                description: "Integração harmoniosa de múltiplos sensores, relógio e visor, modularização de código e boas práticas para projetos escolares."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    moduleNumber: "03",
+    moduleTheme: "avancado",
+    moduleTitle: "Parte 3: Módulo Avançado",
+    moduleSubtitle: "Atuadores de Potência, Motores e Projetos Educacionais",
+    moduleDescription: "Controle equipamentos elétricos de alta potência com segurança, comande servomotores, estabeleça conexão sem fio Bluetooth e explore projetos prontos para a escola.",
+    units: [
+      {
+        unitId: "unidade-7",
+        unitNumber: "7",
+        unitTitle: "Unidade 7: Atuadores de Potência, Motores e Conectividade",
+        unitSummary: "Chaveamento com relés para controle de lâmpadas e motores, controle angular preciso com servomotores e comunicação sem fio Bluetooth com celular.",
+        topics: [
+          {
+            topicTitle: "Potência, Movimento e Comunicação Sem Fio",
+            lessons: [
+              {
+                title: "Acionamento de Potência com Módulo Relé",
+                channel: "Robótica Prática",
+                videoTitle: "Módulo relé para ligar lâmpada com Arduino",
+                youtubeUrl: "https://www.youtube.com/watch?v=WNKXt4yAsZY",
+                embedUrl: "https://www.youtube.com/embed/WNKXt4yAsZY",
+                description: "Isolamento eletromecânico, contatos Normalmente Aberto (NA) e Fechado (NF) e regras rigorosas de segurança ao manusear 110V/220V."
+              },
+              {
+                title: "Controle de Movimento com Servomotores",
+                channel: "Brincando com Ideias",
+                videoTitle: "Como programar Servo Motor no Arduino",
+                youtubeUrl: "https://www.youtube.com/watch?v=LMs7x5cV5GQ",
+                embedUrl: "https://www.youtube.com/embed/LMs7x5cV5GQ",
+                description: "Funcionamento de servomotores (SG90), sinal de controle PWM, biblioteca Servo.h e controle angular exato de 0° a 180° para cancelas e travas."
+              },
+              {
+                title: "Comunicação Sem Fio via Bluetooth (Módulo HC-05)",
+                channel: "FunBots",
+                videoTitle: "Dabble Bluetooth Arduino com HC-05",
+                youtubeUrl: "https://www.youtube.com/watch?v=f4wSzpJJlsk",
+                embedUrl: "https://www.youtube.com/embed/f4wSzpJJlsk",
+                description: "Configuração do módulo HC-05, biblioteca SoftwareSerial, pareamento com smartphones Android e recepção de comandos remotos."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        unitId: "unidade-8",
+        unitNumber: "8",
+        unitTitle: "Unidade 8: Projetos Integradores Aplicados à Educação",
+        unitSummary: "Projetos temáticos prontos para inspirar Feiras de Ciências, Itinerários Formativos e aulas práticas de STEAM.",
+        topics: [
+          {
+            topicTitle: "Projetos Práticos para a Escola",
+            lessons: [
+              {
+                title: "Horta Inteligente Automatizada",
+                channel: "JuliaLabs",
+                videoTitle: "Horta inteligente usando ARDUINO",
+                youtubeUrl: "https://www.youtube.com/watch?v=ORgb678Os1U",
+                embedUrl: "https://www.youtube.com/embed/ORgb678Os1U",
+                description: "Projeto interdisciplinar combinando sensor de umidade do solo, temporização com RTC, irrigação com bomba/relé e display LCD."
+              },
+              {
+                title: "Estação Meteorológica Escolar",
+                channel: "Catarina Mouro",
+                videoTitle: "Como criar Sensor Temperatura e Umidade Arduino | DHT11",
+                youtubeUrl: "https://www.youtube.com/watch?v=obmUmRir6Fk",
+                embedUrl: "https://www.youtube.com/embed/obmUmRir6Fk",
+                description: "Integração do sensor DHT11 para aferição de temperatura e umidade do ar, luminosidade com LDR e exibição de dados climáticos."
+              },
+              {
+                title: "Cofre e Alarme de Segurança Interativo",
+                channel: "Engenharia Entendida",
+                videoTitle: "Alarme com senha | Arduino projects",
+                youtubeUrl: "https://www.youtube.com/watch?v=Bb7NK1gXzxQ",
+                embedUrl: "https://www.youtube.com/embed/Bb7NK1gXzxQ",
+                description: "Teclado matricial 4x4 com conferência de senha eletrônica, servomotor para tranca física, detecção PIR e alarme sonoro com buzzer."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+];
+
+const totalLessonsCount = courseModules.reduce(
+  (acc, mod) => acc + mod.units.reduce((uAcc, unit) => uAcc + unit.topics.reduce((tAcc, top) => tAcc + top.lessons.length, 0), 0),
+  0
+);
+---
+
+<Layout 
+  title="Curso de Arduino para Professores" 
+  description="Trilha completa de aprendizado de Arduino, Eletrônica e Robótica Educacional para professores do Ensino Médio de Pernambuco."
+>
+  <!-- Barra de navegação interna de volta -->
+  <div class="top-nav-bar">
+    <a href="/" class="back-link">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+      <span>Voltar para o Início do Portal</span>
+    </a>
+    <span class="portal-tag">CGEMP • GRE Floresta</span>
+  </div>
+
+  <!-- Hero Principal com Identidade Visual de Pernambuco -->
+  <header class="pe-hero">
+    <div class="pe-hero-rainbow" aria-hidden="true"></div>
+    <div class="pe-hero-grid">
+      <div class="pe-hero-copy">
+        <div class="pe-pill-badge">
+          <span class="sun-icon">☀️</span>
+          <span>Formação Docente em Robótica &amp; Cultura Maker</span>
+        </div>
+        <h1>Aprenda Arduino do Zero</h1>
+        <p class="pe-hero-lead">
+          Trilha pedagógica estruturada de Eletrônica, Robótica e Programação pensada para professores do Ensino Médio de Pernambuco. Uma curadoria prática com os melhores educadores do Brasil.
+        </p>
+      </div>
+
+      <div class="pe-hero-stats">
+        <div class="stat-box stat-module">
+          <div class="stat-icon">📚</div>
+          <div class="stat-data">
+            <strong>3</strong>
+            <span>Módulos Formativos</span>
+          </div>
+        </div>
+        <div class="stat-box stat-unit">
+          <div class="stat-icon">🎯</div>
+          <div class="stat-data">
+            <strong>8</strong>
+            <span>Unidades Temáticas</span>
+          </div>
+        </div>
+        <div class="stat-box stat-lessons">
+          <div class="stat-icon">🎬</div>
+          <div class="stat-data">
+            <strong>{totalLessonsCount}</strong>
+            <span>Videoaulas Selecionadas</span>
+          </div>
+        </div>
+        <div class="stat-box stat-free">
+          <div class="stat-icon">🔓</div>
+          <div class="stat-data">
+            <strong>100%</strong>
+            <span>Aberto &amp; Gratuito</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Painel de Controle e Navegação Rápida -->
+  <section class="action-panel" aria-label="Navegação e filtros do curso">
+    <div class="panel-header">
+      <div class="panel-title-wrap">
+        <span class="panel-icon">🧭</span>
+        <div>
+          <h2 class="panel-title">Navegação Rápida por Unidades</h2>
+          <p class="panel-subtitle">Clique em uma unidade para navegar direto ou use os botões para recolher/expandir tudo.</p>
+        </div>
+      </div>
+
+      <div class="accordion-global-controls">
+        <button type="button" id="btn-expand-all" class="control-btn" title="Abrir todas as unidades">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="7 13 12 18 17 13"></polyline><polyline points="7 6 12 11 17 6"></polyline></svg>
+          <span>Expandir Todas</span>
+        </button>
+        <button type="button" id="btn-collapse-all" class="control-btn" title="Fechar todas as unidades">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="17 11 12 6 7 11"></polyline><polyline points="17 18 12 13 7 18"></polyline></svg>
+          <span>Recolher Todas</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Chips de atalho para cada uma das 8 Unidades -->
+    <div class="quick-units-list">
+      {courseModules.flatMap((m) => m.units).map((unit) => (
+        <a href={`#${unit.unitId}`} class="quick-unit-chip" data-unit-target={unit.unitId}>
+          <span class="chip-num">U{unit.unitNumber}</span>
+          <span class="chip-name">{unit.unitTitle.replace(/^Unidade\s\d+:\s*/, '')}</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- Container Principal dos Módulos e Unidades -->
+  <main class="course-curriculum">
+    {courseModules.map((module) => (
+      <section class={`module-block theme-${module.moduleTheme}`}>
+        <!-- Cabeçalho do Módulo -->
+        <header class="module-banner">
+          <div class="module-tag-row">
+            <span class="module-badge">Módulo {module.moduleNumber}</span>
+            <span class="module-status">{module.units.length} Unidades</span>
+          </div>
+          <h2 class="module-main-title">{module.moduleTitle}</h2>
+          <p class="module-sub">{module.moduleSubtitle}</p>
+          <p class="module-desc">{module.moduleDescription}</p>
+        </header>
+
+        <!-- Lista de Unidades do Módulo (em Accordion Interativo) -->
+        <div class="units-wrapper">
+          {module.units.map((unit) => (
+            <details id={unit.unitId} class="unit-accordion" open>
+              <summary class="unit-accordion-summary">
+                <div class="summary-left">
+                  <span class="unit-pill">Unidade {unit.unitNumber}</span>
+                  <div class="summary-titles">
+                    <h3 class="unit-heading">{unit.unitTitle.replace(/^Unidade\s\d+:\s*/, '')}</h3>
+                    <p class="unit-brief">{unit.unitSummary}</p>
+                  </div>
+                </div>
+
+                <div class="summary-right">
+                  <span class="lesson-count-badge">
+                    {unit.topics.reduce((acc, t) => acc + t.lessons.length, 0)} aulas
+                  </span>
+                  <span class="toggle-indicator" aria-hidden="true">
+                    <svg class="chevron-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                  </span>
+                </div>
+              </summary>
+
+              <!-- Conteúdo interno da Unidade -->
+              <div class="unit-content-body">
+                {unit.topics.map((topic) => (
+                  <div class="topic-section">
+                    {topic.topicTitle && (
+                      <div class="topic-header-bar">
+                        <span class="topic-marker">✦</span>
+                        <h4 class="topic-name">{topic.topicTitle}</h4>
+                      </div>
+                    )}
+
+                    <!-- Grade dos Vídeos Ampliados -->
+                    <div class="wide-lessons-grid">
+                      {topic.lessons.map((lesson, lIndex) => (
+                        <article class="cinema-card">
+                          <!-- Topo do Card: Título + Canal + Link YouTube -->
+                          <header class="cinema-card-header">
+                            <div class="cinema-meta-row">
+                              <span class="lesson-order-pill">Aula {lIndex + 1}</span>
+                              <span class="channel-pill">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+                                {lesson.channel}
+                              </span>
+                            </div>
+
+                            <h5 class="cinema-lesson-title">{lesson.title}</h5>
+                            
+                            <a 
+                              href={lesson.youtubeUrl} 
+                              target="_blank" 
+                              rel="noopener noreferrer" 
+                              class="cinema-video-subtitle"
+                              title="Abrir vídeo original no YouTube"
+                            >
+                              <span>{lesson.videoTitle}</span>
+                              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                            </a>
+                          </header>
+
+                          <!-- Player Central Ampliado (16:9 Cinema) -->
+                          <div class="cinema-player-container">
+                            <iframe
+                              src={lesson.embedUrl}
+                              title={lesson.videoTitle}
+                              loading="lazy"
+                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                              referrerpolicy="strict-origin-when-cross-origin"
+                              allowfullscreen
+                            ></iframe>
+                          </div>
+
+                          <!-- Rodapé do Card: "O que aborda" estruturado -->
+                          <footer class="cinema-card-footer">
+                            <div class="content-summary-box">
+                              <div class="summary-label">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                                <span>O que você vai aprender nesta aula:</span>
+                              </div>
+                              <p class="summary-text">{lesson.description}</p>
+                            </div>
+
+                            <div class="fallback-action-bar">
+                              <a 
+                                href={lesson.youtubeUrl} 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                class="fallback-yt-link"
+                              >
+                                <span>Assistir diretamente no YouTube</span>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                              </a>
+                            </div>
+                          </footer>
+                        </article>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </details>
+          ))}
+        </div>
+      </section>
+    ))}
+  </main>
+</Layout>
+
+<!-- Script interativo para expandir/recolher unidades e navegar suavemente -->
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const btnExpandAll = document.getElementById('btn-expand-all');
+    const btnCollapseAll = document.getElementById('btn-collapse-all');
+    const allAccordions = document.querySelectorAll('details.unit-accordion');
+    const quickChips = document.querySelectorAll('.quick-unit-chip');
+
+    if (btnExpandAll) {
+      btnExpandAll.addEventListener('click', () => {
+        allAccordions.forEach(acc => acc.open = true);
+      });
+    }
+
+    if (btnCollapseAll) {
+      btnCollapseAll.addEventListener('click', () => {
+        allAccordions.forEach(acc => acc.open = false);
+      });
+    }
+
+    quickChips.forEach(chip => {
+      chip.addEventListener('click', (e) => {
+        const targetId = chip.getAttribute('data-unit-target');
+        if (targetId) {
+          const targetEl = document.getElementById(targetId);
+          if (targetEl) {
+            targetEl.open = true;
+          }
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  /* ==========================================================================
+     Top Bar & Breadcrumbs
+     ========================================================================== */
+  .top-nav-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-6);
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-blue-pe-dark);
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 6px 14px;
+    background: rgba(0, 78, 154, 0.08);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+  }
+
+  .back-link:hover {
+    background: var(--color-blue-pe);
+    color: white;
+    transform: translateX(-3px);
+  }
+
+  .portal-tag {
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-blue-pe);
+    background: rgba(255, 209, 0, 0.2);
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+    border: 1px solid rgba(255, 209, 0, 0.4);
+  }
+
+  /* ==========================================================================
+     Hero com Identidade de Pernambuco (Cores & Arco-Íris)
+     ========================================================================== */
+  .pe-hero {
+    position: relative;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(135deg, #003667 0%, #004e9a 60%, #0a2240 100%);
+    color: var(--color-white);
+    padding: var(--space-10) var(--space-10) var(--space-12);
+    margin-bottom: var(--space-8);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+  }
+
+  /* Faixa inspirada no arco-íris e sol de Pernambuco */
+  .pe-hero-rainbow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, #d90429 0%, #ffd100 35%, #107e3e 70%, #004e9a 100%);
+  }
+
+  .pe-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px;
+    right: -80px;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 209, 0, 0.18) 0%, rgba(255, 209, 0, 0) 70%);
+    pointer-events: none;
+  }
+
+  .pe-hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.9fr);
+    gap: var(--space-8);
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .pe-pill-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 209, 0, 0.4);
+    padding: 6px 14px;
+    border-radius: var(--radius-full);
+    font-size: 0.84rem;
+    font-weight: 700;
+    color: #ffd100;
+    margin-bottom: var(--space-4);
+  }
+
+  .sun-icon {
+    font-size: 1rem;
+  }
+
+  .pe-hero h1 {
+    font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+    font-weight: 900;
+    color: var(--color-white);
+    margin-bottom: var(--space-4);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    text-shadow: 0 3px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  .pe-hero-lead {
+    font-size: 1.18rem;
+    color: rgba(255, 255, 255, 0.92);
+    line-height: 1.6;
+    margin: 0;
+    max-width: 680px;
+  }
+
+  .pe-hero-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+  }
+
+  .stat-box {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-4);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: var(--radius-md);
+    backdrop-filter: blur(8px);
+    transition: transform var(--transition-fast), background var(--transition-fast);
+  }
+
+  .stat-box:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.14);
+  }
+
+  .stat-icon {
+    font-size: 1.8rem;
+    line-height: 1;
+  }
+
+  .stat-data {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .stat-data strong {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #ffd100;
+    line-height: 1;
+  }
+
+  .stat-data span {
+    font-size: 0.86rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.88);
+    margin-top: 4px;
+  }
+
+  /* ==========================================================================
+     Action Panel (Navegação Rápida e Controles de Accordion)
+     ========================================================================== */
+  .action-panel {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    padding: var(--space-6) var(--space-8);
+    margin-bottom: var(--space-12);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+    padding-bottom: var(--space-5);
+    border-bottom: 1px solid rgba(0, 78, 154, 0.1);
+    margin-bottom: var(--space-5);
+  }
+
+  .panel-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .panel-icon {
+    font-size: 1.8rem;
+  }
+
+  .panel-title {
+    font-size: 1.25rem;
+    margin: 0 0 4px 0;
+    color: var(--color-blue-pe-deep);
+  }
+
+  .panel-subtitle {
+    margin: 0;
+    font-size: 0.92rem;
+    color: var(--color-text-muted);
+  }
+
+  .accordion-global-controls {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .control-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: var(--radius-sm);
+    font-size: 0.86rem;
+    font-weight: 700;
+    cursor: pointer;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface-soft);
+    color: var(--color-blue-pe-dark);
+    transition: all var(--transition-fast);
+  }
+
+  .control-btn:hover {
+    background: var(--color-blue-pe);
+    color: white;
+    border-color: var(--color-blue-pe);
+    box-shadow: 0 4px 12px rgba(0, 78, 154, 0.2);
+  }
+
+  .quick-units-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: var(--space-3);
+  }
+
+  .quick-unit-chip {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    background: var(--color-surface-soft);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    color: var(--color-text-main);
+    transition: all var(--transition-fast);
+  }
+
+  .quick-unit-chip:hover {
+    background: white;
+    border-color: var(--color-blue-pe);
+    box-shadow: 0 6px 16px rgba(0, 78, 154, 0.12);
+    transform: translateY(-2px);
+  }
+
+  .chip-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-blue-pe);
+    color: white;
+    font-weight: 800;
+    font-size: 0.78rem;
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+  }
+
+  .chip-name {
+    font-size: 0.88rem;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--color-blue-pe-deep);
+  }
+
+  /* ==========================================================================
+     Módulos Temáticos (Iniciante, Intermediário, Avançado)
+     ========================================================================== */
+  .course-curriculum {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-16);
+  }
+
+  .module-block {
+    position: relative;
+    border-radius: var(--radius-lg);
+    background: transparent;
+  }
+
+  .module-banner {
+    padding: var(--space-6) var(--space-8);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-6);
+    box-shadow: var(--shadow-sm);
+  }
+
+  /* Tema 1: Azul & Sol (Iniciante) */
+  .theme-iniciante .module-banner {
+    background: linear-gradient(135deg, #eaf2fc 0%, #fefcf3 100%);
+    border: 2px solid rgba(0, 78, 154, 0.2);
+    border-left: 8px solid var(--color-blue-pe);
+  }
+  .theme-iniciante .module-badge {
+    background: var(--color-blue-pe);
+    color: white;
+  }
+
+  /* Tema 2: Verde Esperança & Turquesa (Intermediário) */
+  .theme-intermediario .module-banner {
+    background: linear-gradient(135deg, #eef9f2 0%, #f4fbf7 100%);
+    border: 2px solid rgba(16, 126, 62, 0.25);
+    border-left: 8px solid #107e3e;
+  }
+  .theme-intermediario .module-badge {
+    background: #107e3e;
+    color: white;
+  }
+
+  /* Tema 3: Vermelho & Ouro (Avançado) */
+  .theme-avancado .module-banner {
+    background: linear-gradient(135deg, #fdf1f2 0%, #fffbf0 100%);
+    border: 2px solid rgba(217, 4, 41, 0.25);
+    border-left: 8px solid #d90429;
+  }
+  .theme-avancado .module-badge {
+    background: #d90429;
+    color: white;
+  }
+
+  .module-tag-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-2);
+  }
+
+  .module-badge {
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+  }
+
+  .module-status {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-text-muted);
+  }
+
+  .module-main-title {
+    font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+    color: var(--color-blue-pe-deep);
+    margin: var(--space-1) 0;
+  }
+
+  .module-sub {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-blue-pe);
+    margin: 0 0 var(--space-2) 0;
+  }
+
+  .module-desc {
+    font-size: 0.98rem;
+    color: var(--color-text-muted);
+    margin: 0;
+    max-width: 840px;
+    line-height: 1.5;
+  }
+
+  .units-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  /* ==========================================================================
+     Unidade Accordion Interativa (<details>)
+     ========================================================================== */
+  .unit-accordion {
+    background: white;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    scroll-margin-top: 90px;
+    transition: box-shadow var(--transition-fast), border-color var(--transition-fast);
+  }
+
+  .unit-accordion:hover {
+    border-color: rgba(0, 78, 154, 0.35);
+    box-shadow: var(--shadow-md);
+  }
+
+  .unit-accordion-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-4);
+    padding: var(--space-6) var(--space-8);
+    cursor: pointer;
+    background: white;
+    user-select: none;
+    list-style: none;
+    transition: background var(--transition-fast);
+  }
+
+  .unit-accordion-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .unit-accordion-summary:hover {
+    background: #fafcff;
+  }
+
+  .unit-accordion[open] .unit-accordion-summary {
+    border-bottom: 2px solid rgba(0, 78, 154, 0.1);
+    background: #f8fbfe;
+  }
+
+  .summary-left {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-4);
+    min-width: 0;
+  }
+
+  .unit-pill {
+    flex-shrink: 0;
+    background: var(--color-blue-pe-dark);
+    color: white;
+    font-size: 0.82rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    margin-top: 2px;
+  }
+
+  .summary-titles {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .unit-heading {
+    font-size: 1.32rem;
+    color: var(--color-blue-pe-deep);
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  .unit-brief {
+    font-size: 0.92rem;
+    color: var(--color-text-muted);
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .summary-right {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    flex-shrink: 0;
+  }
+
+  .lesson-count-badge {
+    background: rgba(0, 78, 154, 0.08);
+    color: var(--color-blue-pe-dark);
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: var(--radius-full);
+  }
+
+  .toggle-indicator {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(0, 78, 154, 0.08);
+    color: var(--color-blue-pe);
+    transition: transform 0.3s ease, background 0.2s ease;
+  }
+
+  .unit-accordion[open] .toggle-indicator {
+    transform: rotate(180deg);
+    background: var(--color-blue-pe);
+    color: white;
+  }
+
+  /* ==========================================================================
+     Corpo da Unidade e Tópicos
+     ========================================================================== */
+  .unit-content-body {
+    padding: var(--space-8);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+    background: #fafcfe;
+  }
+
+  .topic-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .topic-header-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 14px;
+    background: rgba(0, 78, 154, 0.05);
+    border-left: 4px solid var(--color-blue-pe);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  }
+
+  .topic-marker {
+    color: #ffd100;
+    font-size: 1rem;
+    line-height: 1;
+  }
+
+  .topic-name {
+    font-size: 1.12rem;
+    color: var(--color-blue-pe-deep);
+    margin: 0;
+    font-weight: 800;
+  }
+
+  /* ==========================================================================
+     Grade e Cards de Vídeo Ampliados (Cinema Layout)
+     ========================================================================== */
+  .wide-lessons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(460px, 1fr));
+    gap: var(--space-6);
+  }
+
+  .cinema-card {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 54, 103, 0.06);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+  }
+
+  .cinema-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 36px rgba(0, 54, 103, 0.14);
+    border-color: rgba(0, 78, 154, 0.4);
+  }
+
+  /* Topo do Card */
+  .cinema-card-header {
+    padding: var(--space-5) var(--space-6);
+    background: white;
+    border-bottom: 1px solid rgba(0, 78, 154, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .cinema-meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .lesson-order-pill {
+    font-size: 0.76rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 800;
+    color: var(--color-blue-pe-dark);
+    background: rgba(0, 78, 154, 0.08);
+    padding: 3px 10px;
+    border-radius: var(--radius-full);
+  }
+
+  .channel-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #b30000;
+    background: #fff0f0;
+    border: 1px solid rgba(255, 0, 0, 0.18);
+    padding: 3px 10px;
+    border-radius: var(--radius-full);
+  }
+
+  .cinema-lesson-title {
+    font-size: 1.18rem;
+    font-weight: 800;
+    color: var(--color-blue-pe-deep);
+    margin: 2px 0 0 0;
+    line-height: 1.3;
+  }
+
+  .cinema-video-subtitle {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.9rem;
+    color: var(--color-blue-pe);
+    font-weight: 600;
+    text-decoration: none;
+    line-height: 1.4;
+    transition: color var(--transition-fast);
+  }
+
+  .cinema-video-subtitle:hover {
+    color: #d90429;
+    text-decoration: underline;
+  }
+
+  /* Player Central Responsivo (Amplo) */
+  .cinema-player-container {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    background: #0a111a;
+  }
+
+  .cinema-player-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  /* Rodapé do Card: "O que aborda" */
+  .cinema-card-footer {
+    padding: var(--space-5) var(--space-6);
+    background: white;
+    border-top: 1px solid rgba(0, 78, 154, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    flex-grow: 1;
+  }
+
+  .content-summary-box {
+    background: #f8fbfe;
+    border: 1px solid rgba(0, 78, 154, 0.12);
+    border-radius: var(--radius-sm);
+    padding: var(--space-4);
+  }
+
+  .summary-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 800;
+    color: var(--color-blue-pe);
+    margin-bottom: var(--space-2);
+  }
+
+  .summary-text {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: var(--color-text-main);
+    margin: 0;
+  }
+
+  .fallback-action-bar {
+    margin-top: auto;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .fallback-yt-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.86rem;
+    font-weight: 700;
+    color: #cc0000;
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    background: #fff5f5;
+    border: 1px solid rgba(204, 0, 0, 0.2);
+    transition: all var(--transition-fast);
+  }
+
+  .fallback-yt-link:hover {
+    background: #cc0000;
+    color: white;
+    transform: translateX(2px);
+  }
+
+  /* ==========================================================================
+     Responsividade
+     ========================================================================== */
+  @media (max-width: 960px) {
+    .pe-hero-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .pe-hero {
+      padding: var(--space-6);
+    }
+
+    .wide-lessons-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .unit-accordion-summary {
+      padding: var(--space-5);
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .summary-right {
+      width: 100%;
+      justify-content: space-between;
+      margin-top: var(--space-2);
+    }
+
+    .unit-content-body {
+      padding: var(--space-4);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .pe-hero-stats {
+      grid-template-columns: 1fr;
+    }
+
+    .panel-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .accordion-global-controls {
+      width: 100%;
+    }
+
+    .control-btn {
+      flex: 1;
+      justify-content: center;
+    }
+
+    .quick-units-list {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

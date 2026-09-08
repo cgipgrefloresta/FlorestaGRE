@@ -1,0 +1,136 @@
+Plano para uma página de aprendizado de Arduino.
+
+Mapeamos o Módulo Iniciante: Parte 1, dividindo os conceitos em vídeos curtos e altamente didáticos dos canais de maior referência em eletrônica e robótica no Brasil.
+Unidade 1: Eletrônica Desmistificada (Sem Medo do Circuito)
+1. Conceitos Fundamentais da Eletricidade
+	Tensão e Corrente Elétrica:
+	O que aborda: Analogia do fluxo de água, diferença de potencial em Volts (V) e movimento de elétrons em Ampères (A).
+	Vídeo: O que é Tensão e Corrente Elétrica? — Canal: Mundo da Elétrica
+	Link: https://www.youtube.com/watch?v=4201WJ_G6yE
+	Resistência Elétrica e Lei de Ohm:
+	O que aborda: Como os resistores limitam a corrente, a unidade Ohms (Ω) e a aplicação prática da fórmula V=I⋅R.
+	Vídeo: Entenda a Lei de Ohm de forma rápida! — Canal: WR Kits
+	Link: https://www.youtube.com/watch?FjC3L4U3z1k
+2. Tipos de Corrente
+	Corrente Alternada (CA) vs. Corrente Contínua (CC):
+	O que aborda: A diferença entre a energia que vem da tomada (CA) e a energia fornecida por pilhas, baterias e portas USB (CC).
+	Vídeo: Diferença entre Corrente Alternada e Corrente Contínua — Canal: Manual do Mundo
+	Link: https://www.youtube.com/watch?v=p1B5C28sN54
+3. Segurança e Danos ao Equipamento
+	Cuidados com Curto-Circuito e Sobretensão:
+	O que aborda: Os erros mais comuns que queimam microcontroladores, limites de corrente dos pinos e como proteger a protoboard.
+	Vídeo: Como NÃO QUEIMAR o seu ARDUINO! — Canal: Brincando com Ideias
+	Link: https://www.youtube.com/watch?v=8K0i67Yq010
+4. Hardware e Anatomia do Arduino Uno
+	Alimentação da Placa:
+	O que aborda: Formas de ligar o Arduino via Cabo USB, Conector Jack P4 (7V a 12V) e pino Vin, destacando os reguladores de tensão.
+	Vídeo: Como Alimentar o Arduino (USB, Jack e Vin) — Canal: Brincando com Ideias
+	Link: https://www.youtube.com/watch?v=7X-4a-L_zQ8
+	Portas Digitais e Analógicas:
+	O que aborda: O funcionamento dos pinos de entrada e saída, sinais discretos (HIGH/LOW) versus variação de tensão contínua (0 a 5V).
+	Vídeo: Entenda as Portas Digitais e Analógicas do Arduino — Canal: Brincando com Ideias
+	Link: https://www.youtube.com/watch?v=9_N6O6A4Jk0
+	LEDs Indicadores da Placa:
+	O que aborda: O papel dos LEDs ON (alimentação), L (conectado ao pino 13), TX e RX (comunicação serial/transferência de código).
+	Vídeo: O que significam os LEDs da placa Arduino? — Canal: Robótica Prática
+	Link: https://www.youtube.com/watch?v=1K8a0M5N2gA
+
+Unidade 2: O Simulador Tinkercad e a Ponte Blocos → C++
+	Introdução ao Tinkercad Circuits e Interface Virtual
+	O que aborda: Apresentação da plataforma Tinkercad, criação de conta para turmas escolares, navegação pela interface 3D/circuitos e simulação de componentes virtuais.
+	Vídeo: Use um Arduino sem ter Arduino! #ManualMaker Aula 5, Vídeo 1 — Canal: Manual do Mundo
+	Link: https://www.youtube.com/watch?v=CrHJj4OQ6Sw
+	Primeiro Circuito Virtual (LED + Resistor)
+	O que aborda: Montagem prática de um circuito elétrico básico na protoboard virtual, cálculo/escolha do resistor para não queimar o LED e identificação dos avisos de sobrecorrente gerados pelo simulador.
+	Vídeo: Criando um circuito simples com o Tinkercad - LED + Resistor — Canal: Tecnoltronica
+	Link: https://www.youtube.com/watch?v=iJzCDBOFhrc
+	Programação em Blocos e Transição para C++
+	O que aborda: Construção de lógicas de programação com blocos de encaixe no Tinkercad, visualização em tempo real do código C++ correspondente (modo "Blocos + Texto") e introdução às funções fundamentais void setup() e void loop().
+	Vídeo: Como usar PINO DIGITAL de SAÍDA no arduino - Curso Gratuito pelo Tinkercad — Canal: Tecnoltronica
+	Link: https://www.youtube.com/watch?v=BFvxmRM_EBo
+
+Unidade 3: Prática no Hardware Físico e Comandos de Base
+•	A Protoboard (Matriz de Contatos)
+o	O que aborda: Explicação detalhada sobre o funcionamento interno das trilhas elétricas da protoboard, a diferença entre as linhas laterais de alimentação e as colunas centrais de sinal, e como espetar componentes de forma correta.
+o	Vídeo: Como funciona uma protoboard #ManualMaker Aula 3, Vídeo 2 — Canal: Manual do Mundo
+o	Link: https://www.youtube.com/watch?v=DfU6llvIMcM
+•	Primeiros Passos na IDE do Arduino ("Blink" e Upload de Código)
+o	O que aborda: Instalação e navegação na IDE oficial do Arduino, seleção de porta COM e placa, compilação e carregamento do primeiro projeto físico (LED piscando no pino 13) e uso do comando delay().
+o	Vídeo: Curso de Arduino para Iniciantes - Aula 01 - Primeiros Passos — Canal: Brincando com Ideias
+o	Link: https://www.youtube.com/watch?v=oOWuq_Nazig
+•	Saídas e Entradas Digitais (Botão, Pull-Up e Pull-Down)
+o	O que aborda: Leitura e escrita digital com as funções pinMode(), digitalWrite() e digitalRead(). Explica o problema de flutuação de sinal (floating pin) e como resolver usando resistores de Pull-Up ou Pull-Down (externos e internos do Arduino).
+o	Vídeo: Resistor de Pull Up e Pull Down no Arduino — Canal: Brincando com Ideias
+o	Link: https://www.youtube.com/watch?v=2czuMC7kRMs
+•	Entradas Analógicas e Leitura de Sensores (LDR e ADC)
+o	O que aborda: A diferença conceitual entre sinais digitais (0 e 1) e analógicos (contínuos), o Conversor Analógico-Digital (ADC de 10 bits: 0 a 1023), leitura do sensor de luz LDR via analogRead() e lógica de disparo.
+o	Vídeo: Arduino Prático - LDR, Buzzer, analogRead e um Alarme Simples — Canal: Brincando com Ideias
+Link: https://www.youtube.com/watch?v=iIR9_Lfua_w
+
+Parte 2: Módulo Intermediário — Sensores Avançados, Displays, Tempo Real e Ecossistema
+Unidade 4: Sensores de Evento e Monitoramento de Dados
+•	Sensor de Movimento (PIR - Infravermelho Passivo)
+o	O que aborda: Funcionamento do sensor PIR, detecção de variação térmica no ambiente, ajuste de sensibilidade nos trimpots e lógica para acionamento de cargas ou alarmes por presença.
+o	Vídeo: Sensor de Presença PIR com Arduino — Canal: Brincando com Ideias
+o	Link: https://www.youtube.com/watch?v=R2j1dI06FIs
+•	Sensor de Som (Módulo Microfone)
+o	O que aborda: Captação de variações acústicas, ajuste do potenciômetro de limiar do sinal digital e criação de gatilhos para acionar saídas a partir de palmas ou ruídos.
+o	Vídeo: Como usar o Módulo Sensor de Som com Arduino — Canal: Robótica Prática
+o	Link: https://www.youtube.com/watch?v=48S43S4H2x8
+•	Depuração com Monitor Serial
+o	O que aborda: Configuração da taxa de transmissão com Serial.begin(9600), envio de dados com Serial.println() e técnicas de depuração no computador para identificar erros no código.
+o	Vídeo: Usando o Monitor Serial do Arduino para Depuração — Canal: WR Kits
+o	Link: https://www.youtube.com/watch?v=L_6G_Ym2o-M
+
+Unidade 5: Periféricos Avançados, Bibliotecas e Tempo Real
+•	Instalação e Uso de Bibliotecas em C++
+o	O que aborda: Conceito de bibliotecas no ecossistema Arduino, como importar arquivos .h no código usando a diretiva #include e gerenciamento pelo Gerenciador de Bibliotecas da IDE.
+o	Vídeo: Como Instalar e Usar Bibliotecas no Arduino IDE — Canal: Brincando com Ideias
+o	Link: https://www.youtube.com/watch?v=N4k3E-8l5QY
+•	Módulo de Tempo Real (RTC DS1307 / DS3231)
+o	O que aborda: Por que usar um módulo de relógio dedicado, função da bateria moeda (CR2032), configuração inicial e leitura precisa de data e hora para disparo de eventos temporizados.
+o	Vídeo: Módulo RTC DS3231 com Arduino: Relógio em Tempo Real — Canal: WR Kits
+o	Link: https://www.youtube.com/watch?v=P720X1aO1k4
+•	Display LCD 16x2 com Módulo I2C
+o	O que aborda: Simplificação de ligações usando o protocolo I2C (reduzindo de 12 para 2 pinos de sinal: SDA/SCL), identificação de endereço I2C e exibição de textos e dados de sensores no visor.
+o	Vídeo: Display LCD 16x2 com Adaptador I2C no Arduino — Canal: Brincando com Ideias
+o	Link: https://www.youtube.com/watch?v=5rK7A_40f4k
+
+Unidade 6: Panorama de Placas e Projeto Integrador Autônomo
+•	Panorama de Placas (Arduino Uno vs. Nano vs. ESP32 vs. Raspberry Pi Pico)
+o	O que aborda: Análise comparativa entre os microcontroladores mais populares, destacando o formato reduzido do Nano, o poder de processamento com Wi-Fi/Bluetooth do ESP32 e o suporte a MicroPython da Pi Pico.
+o	Vídeo: Arduino vs ESP32 vs Raspberry Pi Pico: Qual Escolher? — Canal: Mundo da Elétrica
+o	Link: https://www.youtube.com/watch?v=Oa17xX8P6-M
+•	Projeto Integrador Autônomo e Metodologia
+o	O que aborda: Integração de múltiplos componentes (sensores, RTC e Display LCD) num único sistema funcional, organização de código modular e boas práticas para estruturar projetos pedagógicos no Ensino Médio.
+o	Vídeo: Criando um Projeto Completo de Automação com Arduino — Canal: Brincando com Ideias
+o	Link: https://www.youtube.com/watch?v=9jX4O1Y6_40
+
+Parte 3: Módulo Avançado (Atuadores e Projetos)
+Unidade 7: Atuadores de Potência, Motores e Conectividade
+	Acionamento de Potência com Módulo Relé
+	O que aborda: Princípio eletromecânico de funcionamento do relé, chaveamento de cargas elétricas nos bornes NA (Normalmente Aberto) e NF (Normalmente Fechado), isolamento elétrico para controle seguro de dispositivos conectados à rede residencial (110V/220V) e cuidados essenciais de segurança.
+	Vídeo: Módulo relé para ligar lâmpada com Arduino — Canal: Robótica Prática
+	Link: https://www.youtube.com/watch?v=WNKXt4yAsZY
+	Controle de Movimento com Servomotores
+	O que aborda: Mecânica interna dos micro servomotores (SG90), modulação por largura de pulso (PWM) e controle angular preciso entre 0^∘ e 180^∘ utilizando a biblioteca nativa Servo.h para aplicação em cancelas, travas e braços robóticos.
+	Vídeo: Como programar Servo Motor no Arduino — Canal: Brincando com Ideias
+	Link: https://www.youtube.com/watch?v=LMs7x5cV5GQ
+	Comunicação Sem Fio via Bluetooth (Módulo HC-05)
+	O que aborda: Configuração e pinagem do módulo Bluetooth HC-05, uso da biblioteca SoftwareSerial para liberar a porta serial principal, pareamento com smartphones Android e recepção de comandos remotos para acionar saídas do Arduino.
+	Vídeo: Dabble Bluetooth Arduino com HC-05 — Canal: FunBots
+	Link: https://www.youtube.com/watch?v=f4wSzpJJlsk
+
+Unidade 8: Projetos Integradores Aplicados à Educação
+	Horta Inteligente Automatizada
+	O que aborda: Projeto completo combinando sensor de umidade de solo (higrômetro), agendamento por tempo com módulo RTC, acionamento de bomba/solenóide via módulo relé e exibição de dados e estados no Display LCD 16x2 I2C.
+	Vídeo: Horta inteligente usando ARDUINO — Canal: JuliaLabs
+	Link: https://www.youtube.com/watch?v=ORgb678Os1U
+	Estação Meteorológica Escolar
+	O que aborda: Integração do sensor DHT11 para medição de temperatura e umidade relativa do ar, sensor LDR para aferição de luminosidade e organização da exibição contínua dos dados coletados em tela LCD.
+	Vídeo: Como criar Sensor Temperatura e Umidade Arduino | DHT11 — Canal: Catarina Mouro
+	Link: https://www.youtube.com/watch?v=obmUmRir6Fk
+	Cofre e Alarme de Segurança Interativo
+	O que aborda: Varredura e leitura de teclado matricial 4x4, lógica de validação de senha armazenada no código, movimentação de servomotor para trava mecânica, detecção de presença com sensor PIR e sinalização de alarme com buzzer e LEDs.
+	Vídeo: Alarme com senha | Arduino projects — Canal: Engenharia Entendida
+	Link: https://www.youtube.com/watch?v=Bb7NK1gXzxQ
